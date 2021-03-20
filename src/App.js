@@ -9,7 +9,7 @@ class App extends Component {
       { name: 'Tom', age: 53},
       { name: 'Jack', age: 41}
     ],
-    otherState: 'other value'
+    otherState: 'other value2'
   }
 
   switchButtonHandler = () => {
