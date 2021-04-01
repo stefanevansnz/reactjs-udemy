@@ -5,37 +5,58 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [ 
-      { name: 'Anne', age: 21},
-      { name: 'Tom', age: 53},
-      { name: 'Jack', age: 41}
+      { name: 'Max', age: 28},
+      { name: 'Manu', age: 29},
+      { name: 'Stephanie', age: 27}
     ],
     otherState: 'other value2'
   }
 
-  switchButtonHandler = (newName) => {
+  switchButtonHandler = () => {
     //console.log('Was clicked');
     this.setState( {
       persons: [ 
-        { name: newName, age: 21},
-        { name: 'Tom', age: 53},
-        { name: 'Jack', age: 61}
+        { name: 'Max!!', age: 28},
+        { name: 'Manu', age: 29},
+        { name: 'Stephanie', age: 27}
+      ]
+    } );
+  }
+
+  nameChangedHandler = (event) => {
+    this.setState( {
+      persons: [ 
+        { name: 'Max', age: 21},
+        { name: event.target.value, age: 29},
+        { name: 'Stephanie', age: 27}
       ]
     } );
   }
 
   render() {
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
+
     return (
       <div className="App">
-        <h1>Hello World</h1>
+        <h1>Hi, I'm a React App</h1>
         <p>Work in progress</p>
-        <button onClick={() => this.switchButtonHandler('Stef name !!!')}>Switch Name</button>
+        <button 
+          style={style}
+          onClick={() => this.switchButtonHandler('Stef name !!!')}>Switch Name</button>
         <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age} />
         <Person 
           name={this.state.persons[1].name} 
           age={this.state.persons[1].age}
-          click={this.switchButtonHandler.bind(this, 'Stef name!')}>My Hobbies:Racing</Person>
+          click={this.switchButtonHandler.bind(this, 'Stef name!')}
+          changed={this.nameChangedHandler}>My Hobbies:Racing</Person>
         <Person 
           name={this.state.persons[2].name} 
           age={this.state.persons[2].age}/>
